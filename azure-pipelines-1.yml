@@ -20,4 +20,9 @@ steps:
       backendAzureRmContainerName: 'subbu'
       backendAzureRmKey: 'dev-terraform.tfstate'
 
+  - task: TerraformTaskV4@4
+    inputs:
+      provider: 'azurerm'
+      command: 'validate' 
 
+  
