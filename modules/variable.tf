@@ -9,3 +9,23 @@ variable "resource_group_location" {
   type        = string
   default     = "west us"
 }
+
+variable "environment" {
+  description = "The environment (e.g., dev, prod)"
+  type        = string
+}
+variable "storage_account_name" {
+  description = "The name of the storage account"
+}
+variable "subnet_id" {
+  description = "The ID of the subnet"
+  type        = string
+}
+variable "vnet_id" {
+  description = "The ID of the virtual network"
+  type        = string
+}
+variable "vnet_name" {
+  description = "The name of the virtual network"
+  type        = string
+}
