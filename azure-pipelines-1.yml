@@ -25,4 +25,9 @@ steps:
       provider: 'azurerm'
       command: 'validate' 
 
-  
+  - task: TerraformTaskV4@4
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      environmentServiceNameAzureRM: 'storage-sc'
+      
