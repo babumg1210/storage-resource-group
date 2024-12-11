@@ -30,4 +30,9 @@ steps:
       provider: 'azurerm'
       command: 'plan'
       environmentServiceNameAzureRM: 'storage-sc'
-      
+  - task: TerraformTaskV4@4
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      commandOptions: '--auto-approve'
+      environmentServiceNameAzureRM: 'storage-sc'
