@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "myrg" {
 }
 resource "azurerm_storage_account" "storage_account" {
   name                     = var.storage_account_name
-  name                  =    azurerm_resource_group.myrg.name
+  resource_group_name                  =    azurerm_resource_group.myrg.name
   location              =    azurerm_resource_group.myrg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
@@ -18,7 +18,7 @@ resource "azurerm_storage_account" "storage_account" {
 
 resource "azurerm_private_endpoint" "example" {
   name                = "${var.storage_account_name}-endpoint"
-  name                  =    azurerm_resource_group.myrg.name
+  resource_group_name                 =    azurerm_resource_group.myrg.name
   location              =    azurerm_resource_group.myrg.location
   subnet_id           =       var.subnet_id
   
@@ -31,11 +31,11 @@ resource "azurerm_private_endpoint" "example" {
 }
 resource "azurerm_private_dns_zone" "example" {
   name                = "privatelink.blob.core.windows.net"
-  resource_group_name = var.resource_group_name
+  resource_group_name =  azurerm_resource_group.myrg.name
 }
 resource "azurerm_private_dns_zone_virtual_network_link" "example" {
   name                  = "${var.vnet_name}-vnetlink"
-  resource_group_name   = var.resource_group_name
+  resource_group_name   =  azurerm_resource_group.myrg.name
   private_dns_zone_name = azurerm_private_dns_zone.example.name
   virtual_network_id    = var.vnet_id
 }
