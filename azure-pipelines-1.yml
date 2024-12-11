@@ -10,10 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - task: TerraformTaskV4@4
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      backendServiceArm: 'storage-sc'
+      backendAzureRmResourceGroupName: 'powershell-grp'
+      backendAzureRmStorageAccountName: 'appstore400089891210'
+      backendAzureRmContainerName: 'subbu'
+      backendAzureRmKey: 'dev-terraform.tfstate'
+      
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
