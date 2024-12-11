@@ -9,8 +9,13 @@ variable "resource_group_location" {
   default = "west us"
 }
 
-provider "random" {}
-
+# Random String Resource
+resource "random_string" "myrandom" {
+  length = 6
+  upper = false 
+  special = false
+  numeric = false   
+}
 module "finalrg" { 
         source = "./modules/" 
         resource_group_name = "test--${random_string.myrandom.id}"
