@@ -22,6 +22,10 @@ variable "subnet_id" {
   description = "The ID of the subnet"
   type        = string
 }
+variable "subnet_name" {
+  description = "Virtual Network Web Subnet Name"
+  type = string
+}
 variable "vnet_id" {
   description = "The ID of the virtual network"
   type        = string
