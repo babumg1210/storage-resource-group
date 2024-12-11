@@ -6,8 +6,8 @@ resource "azurerm_resource_group" "myrg" {
 }
 resource "azurerm_storage_account" "storage_account" {
   name                     = var.storage_account_name
-  name                  = var.resource_group_name
-  location              = var.resource_group_location
+  name                  =    azurerm_resource_group.myrg.name
+  location              =    azurerm_resource_group.myrg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
@@ -15,12 +15,13 @@ resource "azurerm_storage_account" "storage_account" {
     environment = var.environment
   }
 }
+
 resource "azurerm_private_endpoint" "example" {
   name                = "${var.storage_account_name}-endpoint"
-  name     = var.resource_group_name
-  location = var.resource_group_location
-  subnet_id           = var.subnet_id
-
+  name                  =    azurerm_resource_group.myrg.name
+  location              =    azurerm_resource_group.myrg.location
+  subnet_id           =       var.subnet_id
+  
   private_service_connection {
     name                           = "example-privateserviceconnection"
     private_connection_resource_id = azurerm_storage_account.storage_account.id
