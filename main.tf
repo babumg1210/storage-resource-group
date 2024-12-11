@@ -9,7 +9,7 @@ variable "resource_group_location" {
   default = "west us"
 }
 
-
+provider "random" {}
 
 module "finalrg" { 
         source = "./modules/" 
