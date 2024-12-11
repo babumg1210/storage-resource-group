@@ -16,6 +16,7 @@ variable "environment" {
 }
 variable "storage_account_name" {
   description = "The name of the storage account"
+  type = string
 }
 variable "subnet_id" {
   description = "The ID of the subnet"
