@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 module "my_resource_group" {
-   source              = "./modules/resource_group"  # Ensure this path is correct
+   source              = "./resource_group"  # Ensure this path is correct
    resource_group_name = "my-resource-group"
    location           = "East US"
 }
