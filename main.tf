@@ -20,7 +20,7 @@ resource "random_string" "myrandom" {
 variable "storage_account_name" {
   description = "The name of the storage account"
   type        = string
-  deafult = "teststorageaccount"
+  default = "teststorageaccount"
 }
 variable "environment" {
   description = "The environment (e.g., dev, prod)"
