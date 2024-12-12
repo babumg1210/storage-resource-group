@@ -6,6 +6,9 @@ terraform {
     key                  = "dev-terraform.tfstate"
   }
 }
+provider "azurerm" { 
+features {}  
+}
 variable "resource_group_name" {
   description = "Provide the resource group name"
   type        = string
