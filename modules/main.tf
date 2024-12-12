@@ -33,7 +33,7 @@ resource "azurerm_private_endpoint" "example" {
   name                = "${var.storage_account_name}-endpoint"
   resource_group_name                 =    azurerm_resource_group.myrg.name
   location              =    azurerm_resource_group.myrg.location
-  subnet_id           =       var.subnet_id
+  subnet_id           =       azurerm_subnet.id
   
   private_service_connection {
     name                           = "example-privateserviceconnection"
@@ -50,5 +50,5 @@ resource "azurerm_private_dns_zone_virtual_network_link" "example" {
   name                  = "${var.vnet_name}-vnetlink"
   resource_group_name   =  azurerm_resource_group.myrg.name
   private_dns_zone_name = azurerm_private_dns_zone.example.name
-  virtual_network_id    = var.vnet_id
+  virtual_network_id    = azurerm_virtual_network.vnet.id
 }
