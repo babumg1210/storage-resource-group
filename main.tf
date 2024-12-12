@@ -76,4 +76,6 @@ module "finalrg" {
   vnet_address_space             =  var.vnet_address_space
   web_subnet_name           =  var.web_subnet_name
   web_subnet_address           =   var.web_subnet_address
+  providers = { 
+  azurerm = azurerm
 }
