@@ -5,6 +5,7 @@ terraform {
     container_name       = "subbu"
     key                  = "dev-terraform.tfstate"
   }
+}
 variable "resource_group_name" {
   description = "Provide the resource group name"
   type        = string
