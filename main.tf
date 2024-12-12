@@ -82,3 +82,4 @@ module "finalrg" {
   providers = { 
   azurerm = azurerm
 }
+}
