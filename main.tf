@@ -60,9 +60,15 @@ variable "web_subnet_address" {
   type = list(string)
   default = ["10.1.1.0/24"]
 }
+variable "num_instances" { 
+description = "Number of instances to create" 
+type = number 
+default = 2 
+}
 module "finalrg" { 
   source = "./modules"  # Ensure this path is correct
-  resource_group_name = "${var.resource_group_name}-${random_string.myrandom.result}"  # Use the random string
+  count = var.num_instance
+  resource_group_name = "${var.resource_group_name}-${random_string.myrandom.result}-${count.index}"  # Use the random string
   resource_group_location = var.resource_group_location
   storage_account_name = lower(replace("${var.storage_account_name}${random_string.myrandom.result}", "/[^a-z0-9]/", ""))
   environment          =  var.environment
