@@ -70,16 +70,13 @@ default = 2
 }
 module "finalrg" { 
   source = "./modules"  # Ensure this path is correct
-  count = var.num_instance
-  resource_group_name = "${var.resource_group_name}-${random_string.myrandom.result}-${count.index}"  # Use the random string
+  count = var.num_instances
+  resource_group_name = "${var.resource_group_name}-${random_string.myrandom.result}}"  # Use the random string
   resource_group_location = var.resource_group_location
-  storage_account_name = lower(replace("${var.storage_account_name}${random_string.myrandom.result}", "/[^a-z0-9]/", ""))
+  storage_account_name = lower(replace("${var.storage_account_name}${random_string.myrandom.result}${count.index}", "/[^a-z0-9]/", ""))
   environment          =  var.environment
   vnet_name            =  "${var.vnet_name}-${random_string.myrandom.result}"
   vnet_address_space             =  var.vnet_address_space
   web_subnet_name           =  var.web_subnet_name
   web_subnet_address           =   var.web_subnet_address
-  providers = { 
-  azurerm = azurerm
-}
 }
