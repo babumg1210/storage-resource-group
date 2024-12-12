@@ -1,3 +1,10 @@
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "powershell-grp"
+    storage_account_name = "appstore400089891210"
+    container_name       = "subbu"
+    key                  = "dev-terraform.tfstate"
+  }
 variable "resource_group_name" {
   description = "Provide the resource group name"
   type        = string
