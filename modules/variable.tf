@@ -18,19 +18,27 @@ variable "storage_account_name" {
   description = "The name of the storage account"
   type = string
 }
-variable "subnet_id" {
-  description = "The ID of the subnet"
-  type        = string
+## Virtual Network
+variable "vnet_name" {
+  description = "Virtual Network name"
+  type = string
+  default = "vnet-default"
 }
-variable "subnet_name" {
+variable "vnet_address_space" {
+  description = "Virtual Network address_space"
+  type = list(string)
+  default = ["10.0.0.0/16"]
+}
+# Web Subnet Name
+variable "web_subnet_name" {
   description = "Virtual Network Web Subnet Name"
   type = string
+  default = "websubnet"
 }
-variable "vnet_id" {
-  description = "The ID of the virtual network"
-  type        = string
+# Web Subnet Address Space
+variable "web_subnet_address" {
+  description = "Virtual Network Web Subnet Address Spaces"
+  type = list(string)
+  default = ["10.0.1.0/24"]
 }
-variable "vnet_name" {
-  description = "The name of the virtual network"
-  type        = string
-}
+
