@@ -27,27 +27,31 @@ variable "environment" {
   type        = string
   default = "dev"
 }
+## Virtual Network
 variable "vnet_name" {
-  description = "The name of the virtual network"
-  type        = string
-  default = "storage-vnet"
-}
-variable "vnet_id" {
-  description = "The ID of the virtual network"
-  type = list(string)
-  default = ["10.0.0.0/16"]
-}
-variable "subnet_name" {
-  description = "Virtual Network Web Subnet Name"
+  description = "Virtual Network name"
   type = string
-  default = "storage-subnet"
+  default = "vnet-app"
 }
-variable "subnet_id" {
-  description = "The ID of the subnet"
+variable "vnet_address_space" {
+  description = "Virtual Network address_space"
   type = list(string)
-  default = ["10.0.1.0/24"]
+  default = ["10.1.0.0/16"]
 }
 
+
+# Web Subnet Name
+variable "web_subnet_name" {
+  description = "Virtual Network Web Subnet Name"
+  type = string
+  default = "app-websubnet"
+}
+# Web Subnet Address Space
+variable "web_subnet_address" {
+  description = "Virtual Network Web Subnet Address Spaces"
+  type = list(string)
+  default = ["10.1.1.0/24"]
+}
 module "finalrg" { 
   source = "./modules"  # Ensure this path is correct
   resource_group_name = "${var.resource_group_name}-${random_string.myrandom.result}"  # Use the random string
@@ -55,7 +59,7 @@ module "finalrg" {
   storage_account_name     = "${var.storage_account_name}-${random_string.myrandom.result}"
   environment          =  var.environment
   vnet_name            =  "${var.vnet_name}-${random_string.myrandom.result}"
-  vnet_id              =   var.vnet_id
-  subnet_name           =  var.subnet_name
-  subnet_id            =   var.subnet_id
+  vnet_address_space             =  var.vnet_address_space
+  web_subnet_name           =  var.web_subnet_name
+  subnet_id            =   var.web_subnet_address
 }
