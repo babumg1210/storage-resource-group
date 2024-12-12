@@ -69,5 +69,5 @@ module "finalrg" {
   vnet_name            =  "${var.vnet_name}-${random_string.myrandom.result}"
   vnet_address_space             =  var.vnet_address_space
   web_subnet_name           =  var.web_subnet_name
-  web_subnet_addres           =   var.web_subnet_address
+  web_subnet_address           =   var.web_subnet_address
 }
