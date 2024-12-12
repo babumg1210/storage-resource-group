@@ -64,7 +64,7 @@ module "finalrg" {
   source = "./modules"  # Ensure this path is correct
   resource_group_name = "${var.resource_group_name}-${random_string.myrandom.result}"  # Use the random string
   resource_group_location = var.resource_group_location
-  storage_account_name     = "${var.storage_account_name}-${random_string.myrandom.result}"
+  storage_account_name = lower(replace("${var.storage_account_name}${random_string.myrandom.result}", "/[^a-z0-9]/", ""))
   environment          =  var.environment
   vnet_name            =  "${var.vnet_name}-${random_string.myrandom.result}"
   vnet_address_space             =  var.vnet_address_space
